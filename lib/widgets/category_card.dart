@@ -4,12 +4,17 @@ import 'package:flutter_meals_app/models/category.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
-  const CategoryCard({super.key, required this.category});
+  final void Function() onSelectCategory;
+  const CategoryCard({
+    super.key,
+    required this.category,
+    required this.onSelectCategory,
+  });
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: theme.colorScheme.primary.withAlpha(160),
-      onTap: () {},
+      onTap: onSelectCategory,
       borderRadius: BorderRadius.circular(10),
       child: Container(
         padding: const EdgeInsets.all(16),
