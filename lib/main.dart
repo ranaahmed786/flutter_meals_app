@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_meals_app/screens/categories_screen.dart';
+import 'package:flutter_meals_app/screens/tapbar_screen.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -20,6 +20,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: theme, home: const CategoriesScreen());
+    return MaterialApp(theme: theme, home: const TapbarScreen());
   }
 }
