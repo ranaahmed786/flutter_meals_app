@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meals_app/models/meals.dart';
 import 'package:flutter_meals_app/screens/categories_screen.dart';
 import 'package:flutter_meals_app/screens/meals_screen.dart';
+import 'package:flutter_meals_app/widgets/mainDrawer/main_drawer.dart';
+import 'package:flutter_meals_app/screens/filters_screen.dart';
 
 class TapbarScreen extends StatefulWidget {
   const TapbarScreen({super.key});
@@ -14,6 +16,12 @@ class _TapbarScreenState extends State<TapbarScreen> {
   List<Meal> favoriteMeals = [];
   int _selectedIndex = 0;
   String _defaultScreenTitle = 'Categories';
+  Map<Filter, bool> setFilters = {
+    Filter.glutenFree: false,
+    Filter.lactoseFree: false,
+    Filter.vegetarian: false,
+    Filter.vegan: false,
+  };
 
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -39,6 +47,7 @@ class _TapbarScreenState extends State<TapbarScreen> {
         onMealSelected: (meal) {
           toggleFavourites(meal);
         },
+        filters: setFilters,
       );
     } else {
       return MealsScreen(
@@ -47,6 +56,23 @@ class _TapbarScreenState extends State<TapbarScreen> {
           toggleFavourites(meal);
         },
       );
+    }
+  }
+
+  void _drawerNavigation(String routeName) async {
+    Navigator.of(context).pop(); // Close the drawer
+    if (routeName == 'filters') {
+      final result = await Navigator.push<Map<Filter, bool>>(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FiltersScreen(currentFilters: setFilters),
+        ),
+      );
+      if (result != null) {
+        setState(() {
+          setFilters = result;
+        });
+      }
     }
   }
 
@@ -69,6 +95,7 @@ class _TapbarScreenState extends State<TapbarScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(_defaultScreenTitle)),
       body: _getSelectedScreen(),
+      drawer: MainDrawer(onSelectRoute: _drawerNavigation),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         items: const [
