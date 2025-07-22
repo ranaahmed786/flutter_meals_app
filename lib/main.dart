@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_meals_app/screens/tapbar_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -10,7 +11,6 @@ final theme = ThemeData(
   ),
   textTheme: GoogleFonts.latoTextTheme(),
 );
-
 void main() {
   runApp(const MyApp());
 }
@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: theme, home: const TapbarScreen());
+    return ProviderScope(
+      child: MaterialApp(theme: theme, home: const TapbarScreen()),
+    );
   }
 }

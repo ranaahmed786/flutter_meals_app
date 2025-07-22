@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meals_app/models/meals.dart';
 import 'package:flutter_meals_app/screens/categories_screen.dart';
 import 'package:flutter_meals_app/screens/meals_screen.dart';
 import 'package:flutter_meals_app/widgets/mainDrawer/main_drawer.dart';
 import 'package:flutter_meals_app/screens/filters_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_meals_app/provider/faviourtes_meal_pro.dart';
 
-class TapbarScreen extends StatefulWidget {
+class TapbarScreen extends ConsumerStatefulWidget {
   const TapbarScreen({super.key});
 
   @override
-  State<TapbarScreen> createState() => _TapbarScreenState();
+  ConsumerState<TapbarScreen> createState() => _TapbarScreenState();
 }
 
-class _TapbarScreenState extends State<TapbarScreen> {
-  List<Meal> favoriteMeals = [];
+class _TapbarScreenState extends ConsumerState<TapbarScreen> {
   int _selectedIndex = 0;
   String _defaultScreenTitle = 'Categories';
-  Map<Filter, bool> setFilters = {
-    Filter.glutenFree: false,
-    Filter.lactoseFree: false,
-    Filter.vegetarian: false,
-    Filter.vegan: false,
-  };
-
-  void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -43,50 +30,19 @@ class _TapbarScreenState extends State<TapbarScreen> {
 
   Widget _getSelectedScreen() {
     if (_selectedIndex == 0) {
-      return CategoriesScreen(
-        onMealSelected: (meal) {
-          toggleFavourites(meal);
-        },
-        filters: setFilters,
-      );
+      return const CategoriesScreen();
     } else {
-      return MealsScreen(
-        meals: favoriteMeals,
-        onMealSelected: (meal) {
-          toggleFavourites(meal);
-        },
-      );
+      return MealsScreen(meals: ref.watch(faviourtiesMealProvider));
     }
   }
 
-  void _drawerNavigation(String routeName) async {
+  void _drawerNavigation(String routeName) {
     Navigator.of(context).pop(); // Close the drawer
     if (routeName == 'filters') {
-      final result = await Navigator.push<Map<Filter, bool>>(
+      Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => FiltersScreen(currentFilters: setFilters),
-        ),
+        MaterialPageRoute(builder: (context) => const FiltersScreen()),
       );
-      if (result != null) {
-        setState(() {
-          setFilters = result;
-        });
-      }
-    }
-  }
-
-  void toggleFavourites(Meal meal) {
-    if (favoriteMeals.contains(meal)) {
-      setState(() {
-        favoriteMeals.remove(meal);
-        _showSnackBar('Removed from favorites!');
-      });
-    } else {
-      setState(() {
-        favoriteMeals.add(meal);
-        _showSnackBar('Added to favorites!');
-      });
     }
   }
 

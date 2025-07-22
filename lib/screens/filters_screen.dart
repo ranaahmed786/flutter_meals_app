@@ -1,95 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_meals_app/provider/filters_provider.dart';
 
-enum Filter { glutenFree, lactoseFree, vegetarian, vegan }
-
-class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({super.key, this.currentFilters});
-  final Map<Filter, bool>? currentFilters;
-
-  @override
-  State<FiltersScreen> createState() => _FiltersScreenState();
-}
-
-class _FiltersScreenState extends State<FiltersScreen> {
-  Map<Filter, bool> filters = {
-    Filter.glutenFree: false,
-    Filter.lactoseFree: false,
-    Filter.vegetarian: false,
-    Filter.vegan: false,
-  };
+class FiltersScreen extends ConsumerWidget {
+  const FiltersScreen({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    filters =
-        widget.currentFilters ??
-        {
-          Filter.glutenFree: false,
-          Filter.lactoseFree: false,
-          Filter.vegetarian: false,
-          Filter.vegan: false,
-        };
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final filters = ref.watch(filtersProvider);
     return Scaffold(
       appBar: AppBar(title: Text('Your Filters')),
-      body: PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (bool didPop, dynamic result) {
-          if (didPop) return;
-          Navigator.of(context).pop({
-            Filter.glutenFree: filters[Filter.glutenFree]!,
-            Filter.lactoseFree: filters[Filter.lactoseFree]!,
-            Filter.vegetarian: filters[Filter.vegetarian]!,
-            Filter.vegan: filters[Filter.vegan]!,
-          });
-        },
-        child: Column(
-          children: [
-            SwitchListTile(
-              value: filters[Filter.glutenFree]!,
-              onChanged: (newValue) {
-                setState(() {
-                  filters[Filter.glutenFree] = newValue;
-                });
-              },
-              title: Text('Gluten-Free'),
-              subtitle: Text('Only include gluten-free meals.'),
-            ),
-            SwitchListTile(
-              value: filters[Filter.lactoseFree]!,
-              onChanged: (newValue) {
-                setState(() {
-                  filters[Filter.lactoseFree] = newValue;
-                });
-              },
-              title: Text('Lactose-Free'),
-              subtitle: Text('Only include lactose-free meals.'),
-            ),
-            SwitchListTile(
-              value: filters[Filter.vegetarian]!,
-              onChanged: (newValue) {
-                setState(() {
-                  filters[Filter.vegetarian] = newValue;
-                });
-              },
-              title: Text('Vegetarian'),
-              subtitle: Text('Only include vegetarian meals.'),
-            ),
-            SwitchListTile(
-              value: filters[Filter.vegan]!,
-              onChanged: (newValue) {
-                setState(() {
-                  filters[Filter.vegan] = newValue;
-                });
-              },
-              title: Text('Vegan'),
-              subtitle: Text('Only include vegan meals.'),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          SwitchListTile(
+            value: filters[Filter.glutenFree]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .updateFilter(Filter.glutenFree, newValue);
+            },
+            title: Text('Gluten-Free'),
+            subtitle: Text('Only include gluten-free meals.'),
+          ),
+          SwitchListTile(
+            value: filters[Filter.lactoseFree]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .updateFilter(Filter.lactoseFree, newValue);
+            },
+            title: Text('Lactose-Free'),
+            subtitle: Text('Only include lactose-free meals.'),
+          ),
+          SwitchListTile(
+            value: filters[Filter.vegetarian]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .updateFilter(Filter.vegetarian, newValue);
+            },
+            title: Text('Vegetarian'),
+            subtitle: Text('Only include vegetarian meals.'),
+          ),
+          SwitchListTile(
+            value: filters[Filter.vegan]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .updateFilter(Filter.vegan, newValue);
+            },
+            title: Text('Vegan'),
+            subtitle: Text('Only include vegan meals.'),
+          ),
+        ],
       ),
     );
   }

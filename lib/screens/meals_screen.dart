@@ -5,23 +5,14 @@ import 'package:flutter_meals_app/widgets/mealCard/meal_card.dart';
 import 'package:flutter_meals_app/screens/meal_details_screen.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({
-    super.key,
-    this.title,
-    required this.meals,
-    required this.onMealSelected,
-  });
+  const MealsScreen({super.key, this.title, required this.meals});
   final String? title;
   final List<Meal> meals;
-  final void Function(Meal meal) onMealSelected;
 
   void _onMealSelected(BuildContext context, Meal meal) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) =>
-            MealDetailsScreen(meal: meal, onMealSelected: onMealSelected),
-      ),
+      MaterialPageRoute(builder: (context) => MealDetailsScreen(meal: meal)),
     );
   }
 
