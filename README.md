@@ -88,25 +88,11 @@ lib/
 - Material Design ripple effects
 
 </td>
-<td width="300px">
+<td width="350px">
 
-```
-┌─────────────────────────────┐
-│ ≡ Categories            ⚙ │
-├─────────────────────────────┤
-│  ┌─────────┐  ┌─────────┐  │
-│  │ Italian │  │Quick&Easy│ │
-│  │ Purple  │  │   Red    │  │
-│  └─────────┘  └─────────┘  │
-│  ┌─────────┐  ┌─────────┐  │
-│  │Hamburger│  │ German  │  │
-│  │ Orange  │  │ Amber   │  │
-│  └─────────┘  └─────────┘  │
-│             ...             │
-├─────────────────────────────┤
-│   🍽️ Categories  ⭐ Favorites│
-└─────────────────────────────┘
-```
+
+<img width="350" height="450" alt="image" src="https://github.com/user-attachments/assets/6badd8ea-2c22-43f1-876d-8095bb9bda00" />
+
 
 </td>
 </tr>
@@ -129,25 +115,10 @@ lib/
 - Progressive image loading
 
 </td>
-<td width="300px">
+<td width="350px">
 
-```
-┌─────────────────────────────┐
-│ ← Italian Meals            │
-├─────────────────────────────┤
-│ ┌─────────────────────────┐ │
-│ │   Spaghetti Bolognese   │ │
-│ │      [Food Image]       │ │
-│ │ 🕒 20min 💼 Simple 💰💰 │ │
-│ └─────────────────────────┘ │
-│ ┌─────────────────────────┐ │
-│ │     Pasta Primavera     │ │
-│ │      [Food Image]       │ │
-│ │ 🕒 30min 💼 Medium 💰💰 │ │
-│ └─────────────────────────┘ │
-│             ...             │
-└─────────────────────────────┘
-```
+<img width="350" height="450" alt="image" src="https://github.com/user-attachments/assets/17486b3e-f15d-476b-ae56-b12173b8962c" />
+
 
 </td>
 </tr>
@@ -172,27 +143,9 @@ lib/
 - Interactive animated favorite star button with 200ms rotation effect
 
 </td>
-<td width="300px">
+<td width="350px">
 
-```
-┌─────────────────────────────┐
-│ ← Spaghetti Bolognese    ⭐ │
-├─────────────────────────────┤
-│      [Large Food Image]     │
-│                             │
-│        Ingredients          │
-│   • 4 Tomatoes             │
-│   • 1 Tbsp Olive Oil       │
-│   • 1 Onion                │
-│   • 250g Spaghetti         │
-│                             │
-│          Steps              │
-│ 1. Cut tomatoes and onion   │
-│ 2. Boil water with salt     │
-│ 3. Cook spaghetti 10-12 min │
-│             ...             │
-└─────────────────────────────┘
-```
+<img width="350" height="450" alt="image" src="https://github.com/user-attachments/assets/8f098bf7-f53a-41e3-b492-73fb46a2e7c2" />
 
 </td>
 </tr>
@@ -215,25 +168,10 @@ lib/
 - Descriptive subtitles for each filter
 
 </td>
-<td width="300px">
+<td width="350px">
 
-```
-┌─────────────────────────────┐
-│ ← Your Filters             │
-├─────────────────────────────┤
-│ Gluten-Free          [OFF] │
-│ Only gluten-free meals      │
-│                             │
-│ Lactose-Free         [ON]  │
-│ Only lactose-free meals     │
-│                             │
-│ Vegetarian           [OFF] │
-│ Only vegetarian meals       │
-│                             │
-│ Vegan                [ON]  │
-│ Only vegan meals            │
-└─────────────────────────────┘
-```
+<img width="350" height="450" alt="image" src="https://github.com/user-attachments/assets/47f15049-7b99-42e6-83e0-d6bd4cbd379b" />
+
 
 </td>
 </tr>
@@ -256,18 +194,10 @@ lib/
 - Restaurant-themed iconography
 
 </td>
-<td width="300px">
+<td width="350px">
 
-```
-┌─────────────────────────────┐
-│        [Gradient Header]    │
-│     🍽️ Cooking Up!         │
-│                             │
-├─────────────────────────────┤
-│ 🍽️  Meals                  │
-│ ⚙️   Filters                │
-└─────────────────────────────┘
-```
+<img width="350" height="450" alt="image" src="https://github.com/user-attachments/assets/9fcd73b2-84de-4534-9b10-e382964d7a7f" />
+
 
 </td>
 </tr>
@@ -290,50 +220,6 @@ lib/
 - **Gradient Backgrounds**: Category cards with alpha variations
 - **Rounded Corners**: 10px border radius for modern appearance
 - **Material Ripples**: Touch feedback throughout the interface
-
-## Screenshots
-
-### Application Screenshots
-<table>
-<tr>
-<td align="center" width="200px">
-<strong>Categories Screen</strong><br>
-<img src="screenshots/categories_screen.png" width="180px" alt="Categories Screen"/>
-</td>
-<td align="center" width="200px">
-<strong>Meals List Screen</strong><br>
-<img src="screenshots/meals_list_screen.png" width="180px" alt="Meals List Screen"/>
-</td>
-<td align="center" width="200px">
-<strong>Meal Details Screen</strong><br>
-<img src="screenshots/meal_details_screen.png" width="180px" alt="Meal Details Screen"/>
-</td>
-<td align="center" width="200px">
-<strong>Favorites Screen</strong><br>
-<img src="screenshots/favorites_screen.png" width="180px" alt="Favorites Screen"/>
-</td>
-</tr>
-<tr>
-<td align="center" width="200px">
-<strong>Filters Screen</strong><br>
-<img src="screenshots/filters_screen.png" width="180px" alt="Filters Screen"/>
-</td>
-<td align="center" width="200px">
-<strong>Navigation Drawer</strong><br>
-<img src="screenshots/navigation_drawer.png" width="180px" alt="Navigation Drawer"/>
-</td>
-<td align="center" width="200px">
-<strong>Dark Theme</strong><br>
-<img src="screenshots/dark_theme.png" width="180px" alt="Dark Theme"/>
-</td>
-<td align="center" width="200px">
-<strong>Empty State</strong><br>
-<img src="screenshots/empty_state.png" width="180px" alt="Empty State"/>
-</td>
-</tr>
-</table>
-
-*Note: Add your application screenshots to a `screenshots/` folder in the project root directory.*
 
 ## Installation & Setup
 
